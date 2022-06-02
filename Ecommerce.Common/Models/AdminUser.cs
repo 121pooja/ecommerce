@@ -1,9 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
 
-namespace Ecommerce.Models
+using System.ComponentModel.DataAnnotations;
+
+namespace Ecommerce.Models.Models
 {
-    public class User
+    public class AdminUser
     {
+
         [Key]
         public int Id { get; set; }
         [Required]
@@ -21,6 +24,5 @@ namespace Ecommerce.Models
         [Required]
         public string Password { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-        
     }
 }

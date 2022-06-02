@@ -1,10 +1,8 @@
 ﻿using Ecommerce.DataAccess.IRepository;
 using Ecommerce.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Ecommerce.DataAccess;
+using Ecommerce.DataAccess.Repository;
+using Ecommerce.Repository.IRepository;
 
 namespace Ecommerce.DataAccess.Repository
 {
@@ -16,14 +14,18 @@ namespace Ecommerce.DataAccess.Repository
             DbContext = dbContext;
         }
 
-        public void Save()
+        public User Update(User obj)
         {
-            DbContext.SaveChanges();
-        }
-
-        public User Update(User user)
-        {
-            DbContext.Update(user);
+            var user = DbContext.Users.FirstOrDefault(u => u.Id == obj.Id);
+            if (user != null)
+            {
+               user.FirstName = obj.FirstName;
+               user.LastName = obj.LastName;
+               user.ImgUrl = obj.ImgUrl;
+               user.Email = obj.Email;
+               user.Phone = obj.Phone;
+               user.Password = obj.Password;
+            }
             return user;
         }
     }

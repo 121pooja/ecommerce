@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Controllers
 {
+
+    [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -26,9 +28,9 @@ namespace Ecommerce.Controllers
 
         [HttpGet]
         [Route("api/Users/GetUser")]
-        public User GetUser([FromQuery] string Email, string Password)
+        public User GetUser([FromQuery] int Id)
         {
-            var User = UnitOfWork.User.GetFirstOrDefault(u=>u.Email == Email);
+            var User = UnitOfWork.User.GetFirstOrDefault(u=>u.Id == Id);
             return User;
         }
 
@@ -43,11 +45,11 @@ namespace Ecommerce.Controllers
 
         [HttpPost]
         [Route("api/Users/UpdateUser")]
-        public User UpdateUser([FromBody] User User)
+        public User UpdateUser([FromBody] User obj)
         {
-            var Users = UnitOfWork.User.Update(User);
+            var Users = UnitOfWork.User.Update(obj);
             UnitOfWork.Save();
-            return User;
+            return Users;
         }
 
         [HttpPost]
