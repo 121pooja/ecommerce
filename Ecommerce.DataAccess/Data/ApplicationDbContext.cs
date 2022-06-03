@@ -23,6 +23,13 @@ namespace Ecommerce.DataAccess
         public DbSet<UserAddress> UserAddresses { get; set; }
         public DbSet<UserPayment> UserPayment{ get; set; }
 
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItem{ get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItem { get; set; }
+        public DbSet<OrderPayment> OrderPayment { get; set; }
+
 
 
 
